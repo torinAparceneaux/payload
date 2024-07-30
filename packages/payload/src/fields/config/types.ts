@@ -807,6 +807,31 @@ export type PointField = {
   validate?: Validate<unknown, unknown, unknown, PointField>
 } & FieldBase
 
+/**
+ * A virtual field that loads in related collections by querying a relationship or upload field.
+ */
+export type JoinField = {
+  access?: {
+    create?: never
+    read?: FieldAccess
+    update?: never
+  }
+  admin?: {
+    disableBulkEdit?: never
+    readOnly?: never
+  } & Admin
+  /**
+   * The slug of the collection to relate with.
+   */
+  collection: CollectionSlug
+  index?: never
+  /**
+   * A string for the field in the collection being joined to.
+   */
+  path: string
+  type: 'join'
+} & FieldBase
+
 export type Field =
   | ArrayField
   | BlockField
@@ -817,6 +842,7 @@ export type Field =
   | EmailField
   | GroupField
   | JSONField
+  | JoinField
   | NumberField
   | PointField
   | RadioField
@@ -839,6 +865,7 @@ export type FieldAffectingData =
   | EmailField
   | GroupField
   | JSONField
+  | JoinField
   | NumberField
   | PointField
   | RadioField
