@@ -24,8 +24,10 @@ const Restore: React.FC<Props> = ({
   versionID,
 }) => {
   const {
-    routes: { admin: adminRoute, api: apiRoute },
-    serverURL,
+    config: {
+      routes: { admin: adminRoute, api: apiRoute },
+      serverURL,
+    },
   } = useConfig()
 
   const { toggleModal } = useModal()

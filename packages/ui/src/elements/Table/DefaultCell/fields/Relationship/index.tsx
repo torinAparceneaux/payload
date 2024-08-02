@@ -26,7 +26,7 @@ export const RelationshipCell: React.FC<RelationshipCellProps> = ({
   label,
   relationTo,
 }) => {
-  const config = useConfig()
+  const { config } = useConfig()
   const { collections, routes } = config
   const [intersectionRef, entry] = useIntersect()
   const [values, setValues] = useState<Value[]>([])
